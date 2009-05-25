@@ -74,7 +74,7 @@ instance (EqS phi, El phi ix, HBinary phi f) => HBinary phi (f :>: ix) where
   hput t p (Tag x) = hput t p x
   hget t p =
     case eqS (proof :: phi ix) p of
-      Nothing -> error "aap"
+      Nothing -> error "decoding error"
       Just Refl -> Tag <$> hget t p
 
 instance (Constructor c, HBinary phi f) => HBinary phi (C c f) where
